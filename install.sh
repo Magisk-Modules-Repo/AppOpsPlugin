@@ -14,6 +14,9 @@ print_modname() {
 
 on_install() {
   # if api 28 or greater abort install
+  if [$API > 25]; then
+  abort => "Does not work for API 28 or greater"
+  fi
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
 }
